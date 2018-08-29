@@ -22,7 +22,7 @@ class TicTacToe
     puts "-----------"
     puts " #{@board[6]} | #{@board[7]} | #{@board[8]} "
   end
-  
+
   def input_to_index(user_input)
     user_input.to_i - 1
   end
@@ -36,7 +36,13 @@ class TicTacToe
   end
 
   def turn_count
-    @board.count{ |token| token=="X"|| token="O"}
+    counts =0
+    board.each do |character|
+      if (character == "X" || character == "O")
+        counts+=1
+      end
+    end
+    return counts
   end
 
   def current_player
