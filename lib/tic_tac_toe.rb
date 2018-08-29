@@ -52,7 +52,7 @@ class TicTacToe
     puts "Please enter 1-9:"
     input = gets.strip
     index = input_to_index(input)
-    
+
     if valid_move?(index)
       player_token=current_player
       move(index,player_token)
@@ -60,6 +60,29 @@ class TicTacToe
     else
       turn
     end
+  end
+
+  def won?
+    WIN_COMBINATIONS.each {|win_combo|
+      index_0 = win_combo[0]
+      index_1 = win_combo[1]
+      index_2 = win_combo[2]
+  
+      position_1 = board[index_0]
+      position_2 = board[index_1]
+      position_3 = board[index_2]
+  
+      if position_1 == "X" && position_2 == "X" && position_3 == "X"
+        return win_combo
+      elsif position_1 == "O" && position_2 == "O" && position_3 == "O"
+        return win_combo
+      end
+    }
+    return false
+  end
+
+  def full?
+    @board.all?{|index| index="X" || index="O"}
   end
 
 
