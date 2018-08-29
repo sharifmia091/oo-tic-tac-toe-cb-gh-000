@@ -28,7 +28,11 @@ class TicTacToe
   end
 
   def valid_move?
-    board[index].between(0,8) && !position_taken?
+    index.between?(0,8) && !position_taken?
+  end
+
+  def turn_count
+    @board.count{ |token| token=="X"|| token="O"}
   end
 
 
