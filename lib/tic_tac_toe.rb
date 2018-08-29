@@ -31,16 +31,18 @@ class TicTacToe
     index.between?(0,8) && !position_taken?
   end
 
-  def current_player(board)
-    counts = turn_count(board)
+  def turn_count
+    @board.count{ |token| token=="X"|| token="O"}
+  end
+
+  def current_player
+    counts = turn_count
     if counts %2 == 0
       return "X"
     else
       return "O"
     end
   end
-
-  
 
   def input_to_index(user_input)
     user_input.to_i -1
