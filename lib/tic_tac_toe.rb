@@ -31,13 +31,16 @@ class TicTacToe
     index.between?(0,8) && !position_taken?
   end
 
-  def turn_count
-    @board.count{ |token| token=="X"|| token="O"}
+  def current_player(board)
+    counts = turn_count(board)
+    if counts %2 == 0
+      return "X"
+    else
+      return "O"
+    end
   end
 
-  def current_player
-    turn_count %2 ==0? "X" : "O"
-  end
+  
 
   def input_to_index(user_input)
     user_input.to_i -1
@@ -102,7 +105,7 @@ class TicTacToe
   end
 
 
-  def winner 
+  def winner
     index = []
     index = won?
     if index == false
@@ -115,12 +118,12 @@ class TicTacToe
       end
     end
   end
-  
+
   def play
     until over? == true
       turn(board)
     end
-  
+
     if won?
       puts "Congratulations #{winner(board)}!"
     elsif draw?
