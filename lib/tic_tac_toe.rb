@@ -39,5 +39,15 @@ class TicTacToe
     turn_count %2 ==0? "X" : "O"
   end
 
+  def input_to_index(user_input)
+    user_input.to_i -1
+  end
+    
+
+  def turn
+    puts "Please enter 1-9:"
+    input = gets.strip
+    index = input_to_index(input)
+
 
 end
