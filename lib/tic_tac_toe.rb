@@ -23,6 +23,10 @@ class TicTacToe
     puts " #{board[6]} | #{board[7]} | #{board[8]} "
   end
 
-  
+  def position_taken
+    !(board[index].nil? || board[index]==" ")
+  end
+
+
 
 end
